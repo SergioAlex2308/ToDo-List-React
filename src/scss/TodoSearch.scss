@@ -1,0 +1,46 @@
+@use 'variables'as v;
+
+#bar {
+
+	& input {
+
+		&:focus {
+			outline: none;
+		}
+
+		&::placeholder {
+			font-weight: 400;
+			font-size: 1.6rem;
+			color: v.$darkLighten;
+			opacity: 0.5;
+		}
+	}
+
+	.bar {
+		&_input {
+			border: none;
+			border-radius: 0.5rem 0 0 .5rem;
+			background-color: v.$whiteDarken;
+			padding-left: 2rem;
+
+			width: 500px;
+			height: 50px;
+			padding: 1.5rem, 2rem;
+
+		}
+
+		&_button {
+			font-size: 1.6rem;
+			font-weight: 200;
+			text-align: center;
+			height: 5rem;
+			width: 10rem;
+
+			border-radius: 5px;
+			border: none;
+			
+			background-color: v.$blue;
+			color: v.$white;
+		}
+	}
+}

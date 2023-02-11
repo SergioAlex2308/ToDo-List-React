@@ -1,0 +1,52 @@
+@use 'variables'as v;
+
+.LeftPanel {
+	z-index: 0;
+	right: -5%;
+	position: fixed;
+	background-color: v.$white;
+	width: 60%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&_filter {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 284px;
+		width: 100%;
+		background-color: v.$blue;
+
+		&_text {
+			color: v.$white;
+			font-weight: 600;
+			margin-bottom: 56px;
+		}
+	}
+
+	&_todos {
+		padding: 70px 0;
+	}
+
+	&_footer {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 30px;
+		width: 153.5px;
+		height: 44px;
+
+		position: fixed;
+		bottom: 0;
+
+		background: #3A5AB9;
+		border-radius: 20px 20px 0px 0px;
+
+		&_icon {
+			fill: aliceblue;
+		}
+	}
+}

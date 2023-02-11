@@ -1,0 +1,83 @@
+@use 'variables'as v;
+
+.Item {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 20px;
+
+	width: 600px;
+	height: 56px;
+
+	background-color: v.$blue;
+
+	box-shadow: inset 0px -1px 0px #8C94B4;
+
+	&:hover {
+		background-color: v.$blue;
+		filter: brightness(95%);
+	}
+
+	&_check {
+		position: relative;
+
+		& label {
+			border: 1px solid v.$white;
+			border-radius: 50%;
+			cursor: pointer;
+			width: 26px;
+			height: 26px;
+			left: 0;
+			position: absolute;
+			top: 0;
+
+			&::after {
+				border: 2px solid v.$blue;
+				border-top: none;
+				border-right: none;
+				content: "";
+				height: 6px;
+				left: 5px;
+				opacity: 0;
+				position: absolute;
+				top: 8px;
+				transform: rotate(-45deg);
+				width: 12px;
+			}
+		}
+
+		& input[type="checkbox"] {
+			visibility: hidden;
+
+			&:checked+label {
+				background-color: v.$white;
+				border-color: v.$white;
+
+				&:after {
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	&_text,
+	&_close {
+		font-weight: 400;
+		font-size: 16px;
+		margin: 0;
+		color: v.$whiteDarken;
+	}
+	&_text {
+		&--completed {
+			font-style: italic;
+			text-decoration: line-through;
+			color: v.$whiteDarken;
+		}
+	}
+
+	&_close:hover {
+		cursor: pointer;
+		filter: drop-shadow(0 0 0.75rem v.$white);
+	}
+}

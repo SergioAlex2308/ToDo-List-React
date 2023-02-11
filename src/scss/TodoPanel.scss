@@ -1,0 +1,61 @@
+@use 'variables'as v;
+
+.RightPanel {
+	position: fixed;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	margin: 0;
+	padding: 40px 40px;
+	width: 50%;
+	height: 100vh;
+
+	background: #F7F7F7;
+	box-shadow: 39px 0px 100px rgba(0, 0, 0, 0.2);
+	border-radius: 0px 40px 40px 0px;
+
+	&_menu {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		&_text {
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+			margin-top: 240px;
+			margin-bottom: 92px;
+
+			
+			color: v.$blue;
+
+			& h1,
+			h3 {
+				margin: 0;
+				padding: 0;
+			}
+			& h1 {
+				font-size: 4rem;
+				font-weight: 400;
+			}
+			& h3 {
+				font-size: 2.4rem;
+				font-weight: 200;
+				font-style: italic;
+			}
+		}
+	}
+
+	&_waves {
+		position: absolute;
+		bottom: -10px;
+		width: 100%;
+
+		& img {
+			width: 100%;
+			border-radius: 0 0 40px 0;
+		}
+	}
+}

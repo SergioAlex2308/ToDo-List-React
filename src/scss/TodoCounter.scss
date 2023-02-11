@@ -1,0 +1,20 @@
+@use 'variables'as v;
+
+.TodoCounter {
+	display: flex;
+	justify-content: space-between;
+	font-size: 16px;
+	padding: 0 25px;
+	background-color: v.$blue;
+	color: v.$blueLighten;
+
+	&_selector {
+		display: flex;
+		justify-content: space-between;
+		gap: 30px;
+
+		& .active {
+			color: v.$white;
+		}
+	}
+}
