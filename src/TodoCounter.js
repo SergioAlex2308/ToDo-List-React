@@ -1,14 +1,29 @@
 import React from 'react'
 import './scss/TodoCounter.scss';
 
-function TodoCounter(props) {
+function TodoCounter({ total, completedTodos, filterType, setFilter }) {
+
+
+	function getFilter(id) {
+		const getSelector = document.querySelector(`#\\${id}`);
+		const selector = document.querySelector('.TodoCounter_selector');
+		const selectorChilds = [...selector.childNodes];
+
+		selectorChilds.map(child => child.classList.remove('active'));
+		getSelector.classList.add('active');
+
+		filterType = getSelector.id;
+		setFilter(filterType);
+		
+	}
+
 	return (
 		<div className='TodoCounter'>
-			<p>{props.quantity} items</p>
+			<p>{total} Items</p>
 			<div className='TodoCounter_selector'>
-				<p className='active'>All</p>	
-				<p>Active</p>	
-				<p>Completed</p>	
+				<p id='_all' className='active' onClick={(e) => getFilter(e.target.id)}>All</p>
+				<p id='_active' onClick={(e) => getFilter(e.target.id)}>Active</p>
+				<p id='_completed' onClick={(e) => getFilter(e.target.id)}>Completed</p>
 			</div>
 		</div>
 	)

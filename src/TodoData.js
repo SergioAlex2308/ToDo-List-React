@@ -6,7 +6,7 @@ import { TodoSearch } from './TodoSearch';
 
 import './scss/TodoData.scss';
 
-const todos = [
+const defaultTodos = [
 	{ id: 1, text: 'Hacer componentes', completed: false },
 	{ id: 2, text: 'Planificar la UI', completed: true },
 	{ id: 3, text: 'Organizar archivos', completed: true },
@@ -14,9 +14,9 @@ const todos = [
 	{ id: 5, text: 'Lógica react', completed: false },
 	{ id: 6, text: 'Deployment', completed: false },
 	{ id: 7, text: 'Deployment', completed: false },
-	{ id: 8, text: 'Deployment', completed: false },
+	{ id: 8, text: 'Deployment', completed: true },
 	{ id: 9, text: 'Deployment', completed: false },
-	{ id: 10, text: 'Deployment', completed: false },
+	{ id: 10, text: 'Deployment', completed: true },
 	{ id: 11, text: 'Deployment', completed: false },
 ];
 
@@ -24,24 +24,65 @@ const BehanceLink = 'https://www.behance.net/sergiomartinez49';
 const GitLink = 'https://github.com/SergioAlex2308';
 
 function TodoData() {
+
+	//States
+	const [todos, setTodos] = React.useState(defaultTodos);
+	const [searchValue, setSearchValue] = React.useState('');
+
+	const [filterType, setFilter] = React.useState('');
+	const [statusItem, setStatus] = React.useState('');
+
+	const completedTodos = todos.filter(todo => todo.completed).length;
+	let totalTodos = todos.length;
+
+	let searchedTodos = [];
+
+	if(filterType === '_completed') {
+		searchedTodos = todos.filter(todo => todo.completed === true);
+		totalTodos = searchedTodos.length;
+	}
+	else if(filterType === '_active') {
+		searchedTodos = todos.filter(todo => todo.completed === false);
+		totalTodos = searchedTodos.length;
+	}
+	else if (!searchedTodos >= 1) {
+		searchedTodos = todos;
+	} else {
+		searchedTodos = todos.filter(todo => {
+			const todoText = todo.text.toLowerCase();
+			const searchText = searchValue.toLowerCase();
+			return todoText.includes(searchText);
+		})
+
+	}
+
 	return (
 		<section className='LeftPanel'>
 			<div className='LeftPanel_filter'>
 				<h2 className='LeftPanel_filter_text'>Your items</h2>
-				<TodoSearch />
+				<TodoSearch
+					searchValue={searchValue}
+					setSearchValue={setSearchValue}
+				/>
 			</div>
 			<div className='LeftPanel_todos'>
 				<TodoList>
-					{todos.map(todo => (
+					{searchedTodos.map(todo => (
 						<TodoItem
 							key={todo.id}
-							id = {todo.id}
+							id={todo.id}
 							text={todo.text}
-							completed={todo.completed}
+							statusItem={statusItem}
+							setStatus={setStatus}
 						/>
 					))}
 				</TodoList>
-				<TodoCounter quantity={todos.length} />
+				<TodoCounter
+					total={totalTodos}
+					completedTodos={completedTodos}
+					filterType={filterType}
+					setFilter={setFilter}
+				/>
 			</div>
 			<div className='LeftPanel_footer'>
 				<a href={BehanceLink} target="_blank" rel="noopener noreferrer">
