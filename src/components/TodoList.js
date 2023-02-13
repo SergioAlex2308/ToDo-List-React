@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './scss/TodoList.scss';
+/* import './TodoList.scss'; */
 
 function TodoList( props ) {
   return (

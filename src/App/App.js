@@ -1,8 +1,8 @@
 import React from "react";
 
-import { TodoPanel } from './TodoPanel';
-import { TodoData } from './TodoData';
-import './scss/App.scss';
+import { TodoPanel } from '../components/TodoPanel';
+import { TodoData } from '../components/TodoData';
+import '../scss/app.scss';
 
 function App() {
   return (

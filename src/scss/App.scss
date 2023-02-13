@@ -1,4 +1,2 @@
-main {
-  display: flex;
-  height: 100%;
-}
+@use 'base';
+@use 'components';

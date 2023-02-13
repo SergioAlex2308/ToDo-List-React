@@ -11,21 +11,9 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
-}
-
-body {
-  margin: 0;
-  font-size: 1.6rem;
-  font-family: 'Inter', sans-serif;
-}
-
-/* ===== Scrollbar CSS ===== */
-/* Firefox */
-* {
   scrollbar-width: thin;
   scrollbar-color: v.$blue;
 }
-
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 8px;
@@ -41,7 +29,13 @@ body {
   border: 1px none #ffffff;
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+body {
+  margin: 0;
+  font-size: 1.6rem;
+  font-family: 'Inter', sans-serif;
+}
+
+main {
+  display: flex;
+  height: 100%;
+}

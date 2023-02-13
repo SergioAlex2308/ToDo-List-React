@@ -4,7 +4,7 @@ import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { TodoSearch } from './TodoSearch';
 
-import './scss/TodoData.scss';
+/* import './TodoData.scss'; */
 
 const defaultTodos = [
 	{ id: 1, text: 'Hacer componentes', completed: false },
@@ -30,7 +30,6 @@ function TodoData() {
 	const [searchValue, setSearchValue] = React.useState('');
 
 	const [filterType, setFilter] = React.useState('');
-	const [statusItem, setStatus] = React.useState('');
 
 	const completedTodos = todos.filter(todo => todo.completed).length;
 	let totalTodos = todos.length;
@@ -55,6 +54,27 @@ function TodoData() {
 		})
 
 	}
+	console.log(searchedTodos);
+
+	const completeTodo = (id) => {
+		
+		// Set complete ToDo
+		const todoIndex = todos.findIndex(todo => todo.id === id);
+		const newTodos = [...todos];
+
+		newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+		setTodos(newTodos);
+	}
+
+	const deleteTodo = (id) => {
+		
+		// Delete ToDo
+		const todoIndex = todos.findIndex(todo => todo.id === id);
+		const newTodos = [...todos];
+
+		newTodos.splice(todoIndex, 1);
+		setTodos(newTodos);
+	}
 
 	return (
 		<section className='LeftPanel'>
@@ -72,8 +92,9 @@ function TodoData() {
 							key={todo.id}
 							id={todo.id}
 							text={todo.text}
-							statusItem={statusItem}
-							setStatus={setStatus}
+							completed={todo.completed}
+							onComplete={() => completeTodo(todo.id)}
+							onDelete={() => deleteTodo(todo.id)}
 						/>
 					))}
 				</TodoList>

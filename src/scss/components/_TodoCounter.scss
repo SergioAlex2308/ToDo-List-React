@@ -1,4 +1,4 @@
-@use 'variables'as v;
+@use 'base/variables' as v;
 
 .TodoCounter {
 	display: flex;
@@ -7,6 +7,8 @@
 	padding: 0 25px;
 	background-color: v.$blue;
 	color: v.$blueLighten;
+	user-select: none;
+	width: 60.8rem;
 
 	&_selector {
 		display: flex;
@@ -15,6 +17,9 @@
 
 		& .active {
 			color: v.$white;
+		}
+		&:hover {
+			cursor: pointer;
 		}
 	}
 }

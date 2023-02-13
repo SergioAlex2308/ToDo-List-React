@@ -1,8 +1,9 @@
 import React from 'react';
 
-import './scss/ToggleLan.scss';
+/* import './ToggleLan.scss'; */
 
 function ToggleLan() {
+
   return (
     <div className='switch'>
       <label className='light'>Light</label>

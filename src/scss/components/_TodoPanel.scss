@@ -1,4 +1,4 @@
-@use 'variables'as v;
+@use 'base/variables' as v;
 
 .RightPanel {
 	position: fixed;
@@ -15,6 +15,12 @@
 	background: #F7F7F7;
 	box-shadow: 39px 0px 100px rgba(0, 0, 0, 0.2);
 	border-radius: 0px 40px 40px 0px;
+
+	&_header {
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+	}
 
 	&_menu {
 		display: flex;

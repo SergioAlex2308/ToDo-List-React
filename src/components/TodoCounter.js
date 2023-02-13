@@ -1,7 +1,7 @@
 import React from 'react'
-import './scss/TodoCounter.scss';
+/* import './TodoCounter.scss'; */
 
-function TodoCounter({ total, completedTodos, filterType, setFilter }) {
+function TodoCounter({ total, filterType, setFilter }) {
 
 
 	function getFilter(id) {
