@@ -6,7 +6,7 @@ import { TodoSearch } from './TodoSearch';
 
 /* import './TodoData.scss'; */
 
-const defaultTodos = [
+/* const defaultTodos = [
 	{ id: 1, text: 'Hacer componentes', completed: false },
 	{ id: 2, text: 'Planificar la UI', completed: true },
 	{ id: 3, text: 'Organizar archivos', completed: true },
@@ -19,14 +19,66 @@ const defaultTodos = [
 	{ id: 10, text: 'Deployment', completed: true },
 	{ id: 11, text: 'Deployment', completed: false },
 ];
-
+ */
 const BehanceLink = 'https://www.behance.net/sergiomartinez49';
 const GitLink = 'https://github.com/SergioAlex2308';
 
+function useLocalStorage(itemName, initialValue) {
+
+	const [error, setError] = React.useState(false);
+	const [loading, setLoading] = React.useState(true);
+
+	const [item, setItem] = React.useState(initialValue);
+
+	React.useEffect(() => {
+		setTimeout(() => {
+			try {
+				const localStorageItem = localStorage.getItem(itemName);
+				let parsedItem;
+
+				if (!localStorageItem) {
+					localStorage.setItem(itemName, JSON.stringify(initialValue));
+					parsedItem = initialValue;
+				} else {
+					parsedItem = JSON.parse(localStorageItem);
+				}
+				setItem(parsedItem);
+				setLoading(false);
+			} catch (error) {
+				setError(error);
+			}
+		}, 500);
+	});
+
+	const saveItem = (newItem) => {
+		try {
+			const stringifiedItem = JSON.stringify(newItem);
+			localStorage.setItem(itemName, stringifiedItem)
+			setItem(newItem);
+		} catch(error) {
+			setError(error);
+		}
+	};
+
+	return {
+		item,
+		saveItem,
+		loading,
+		error
+	};
+}
+
 function TodoData() {
 
+	const localTodoStorage = 'Todos_v1';
+	const {
+		item: todos,
+		saveItem: saveTodos,
+		loading,
+		error
+	} = useLocalStorage(localTodoStorage, []);
+
 	//States
-	const [todos, setTodos] = React.useState(defaultTodos);
 	const [searchValue, setSearchValue] = React.useState('');
 
 	const [filterType, setFilter] = React.useState('');
@@ -36,11 +88,11 @@ function TodoData() {
 
 	let searchedTodos = [];
 
-	if(filterType === '_completed') {
+	if (filterType === '_completed') {
 		searchedTodos = todos.filter(todo => todo.completed === true);
 		totalTodos = searchedTodos.length;
 	}
-	else if(filterType === '_active') {
+	else if (filterType === '_active') {
 		searchedTodos = todos.filter(todo => todo.completed === false);
 		totalTodos = searchedTodos.length;
 	}
@@ -54,27 +106,26 @@ function TodoData() {
 		})
 
 	}
-	console.log(searchedTodos);
 
 	const completeTodo = (id) => {
-		
+
 		// Set complete ToDo
 		const todoIndex = todos.findIndex(todo => todo.id === id);
 		const newTodos = [...todos];
 
 		newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-		setTodos(newTodos);
+		saveTodos(newTodos);
 	}
 
 	const deleteTodo = (id) => {
-		
+
 		// Delete ToDo
 		const todoIndex = todos.findIndex(todo => todo.id === id);
 		const newTodos = [...todos];
 
 		newTodos.splice(todoIndex, 1);
-		setTodos(newTodos);
-	}
+		saveTodos(newTodos);
+	};
 
 	return (
 		<section className='LeftPanel'>
@@ -87,6 +138,10 @@ function TodoData() {
 			</div>
 			<div className='LeftPanel_todos'>
 				<TodoList>
+					{error && <p>Hubo un error</p>}
+					{loading && <p>Cargando...</p>}
+					{(!loading && !searchedTodos.length) && <p>Crear TODO!</p>}
+
 					{searchedTodos.map(todo => (
 						<TodoItem
 							key={todo.id}
