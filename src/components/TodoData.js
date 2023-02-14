@@ -1,4 +1,5 @@
 import React from 'react'
+import { TodoContext } from '../context';
 import { TodoCounter } from './TodoCounter';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
@@ -23,125 +24,27 @@ import { TodoSearch } from './TodoSearch';
 const BehanceLink = 'https://www.behance.net/sergiomartinez49';
 const GitLink = 'https://github.com/SergioAlex2308';
 
-function useLocalStorage(itemName, initialValue) {
-
-	const [error, setError] = React.useState(false);
-	const [loading, setLoading] = React.useState(true);
-
-	const [item, setItem] = React.useState(initialValue);
-
-	React.useEffect(() => {
-		setTimeout(() => {
-			try {
-				const localStorageItem = localStorage.getItem(itemName);
-				let parsedItem;
-
-				if (!localStorageItem) {
-					localStorage.setItem(itemName, JSON.stringify(initialValue));
-					parsedItem = initialValue;
-				} else {
-					parsedItem = JSON.parse(localStorageItem);
-				}
-				setItem(parsedItem);
-				setLoading(false);
-			} catch (error) {
-				setError(error);
-			}
-		}, 500);
-	});
-
-	const saveItem = (newItem) => {
-		try {
-			const stringifiedItem = JSON.stringify(newItem);
-			localStorage.setItem(itemName, stringifiedItem)
-			setItem(newItem);
-		} catch(error) {
-			setError(error);
-		}
-	};
-
-	return {
-		item,
-		saveItem,
-		loading,
-		error
-	};
-}
-
 function TodoData() {
 
-	const localTodoStorage = 'Todos_v1';
 	const {
-		item: todos,
-		saveItem: saveTodos,
+		error,
 		loading,
-		error
-	} = useLocalStorage(localTodoStorage, []);
-
-	//States
-	const [searchValue, setSearchValue] = React.useState('');
-
-	const [filterType, setFilter] = React.useState('');
-
-	const completedTodos = todos.filter(todo => todo.completed).length;
-	let totalTodos = todos.length;
-
-	let searchedTodos = [];
-
-	if (filterType === '_completed') {
-		searchedTodos = todos.filter(todo => todo.completed === true);
-		totalTodos = searchedTodos.length;
-	}
-	else if (filterType === '_active') {
-		searchedTodos = todos.filter(todo => todo.completed === false);
-		totalTodos = searchedTodos.length;
-	}
-	else if (!searchedTodos >= 1) {
-		searchedTodos = todos;
-	} else {
-		searchedTodos = todos.filter(todo => {
-			const todoText = todo.text.toLowerCase();
-			const searchText = searchValue.toLowerCase();
-			return todoText.includes(searchText);
-		})
-
-	}
-
-	const completeTodo = (id) => {
-
-		// Set complete ToDo
-		const todoIndex = todos.findIndex(todo => todo.id === id);
-		const newTodos = [...todos];
-
-		newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-		saveTodos(newTodos);
-	}
-
-	const deleteTodo = (id) => {
-
-		// Delete ToDo
-		const todoIndex = todos.findIndex(todo => todo.id === id);
-		const newTodos = [...todos];
-
-		newTodos.splice(todoIndex, 1);
-		saveTodos(newTodos);
-	};
+		searchedTodos,
+		completeTodo,
+		deleteTodo
+	} = React.useContext(TodoContext)
 
 	return (
 		<section className='LeftPanel'>
 			<div className='LeftPanel_filter'>
 				<h2 className='LeftPanel_filter_text'>Your items</h2>
-				<TodoSearch
-					searchValue={searchValue}
-					setSearchValue={setSearchValue}
-				/>
+				<TodoSearch />
 			</div>
 			<div className='LeftPanel_todos'>
 				<TodoList>
-					{error && <p>Hubo un error</p>}
-					{loading && <p>Cargando...</p>}
-					{(!loading && !searchedTodos.length) && <p>Crear TODO!</p>}
-
+					{error && <p>an error has occurred</p>}
+					{loading && <p>Loading...</p>}
+					{(!loading && !searchedTodos.length) && <p>Add a ToDo...</p>}
 					{searchedTodos.map(todo => (
 						<TodoItem
 							key={todo.id}
@@ -153,12 +56,7 @@ function TodoData() {
 						/>
 					))}
 				</TodoList>
-				<TodoCounter
-					total={totalTodos}
-					completedTodos={completedTodos}
-					filterType={filterType}
-					setFilter={setFilter}
-				/>
+				<TodoCounter/>
 			</div>
 			<div className='LeftPanel_footer'>
 				<a href={BehanceLink} target="_blank" rel="noopener noreferrer">

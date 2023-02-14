@@ -1,8 +1,11 @@
 import React from 'react'
+import { TodoContext } from '../context';
 /* import './TodoCounter.scss'; */
 
-function TodoCounter({ total, filterType, setFilter }) {
+function TodoCounter() {
 
+	const { totalTodos, setFilter } = React.useContext(TodoContext);
+	let { filterType } = React.useContext(TodoContext);
 
 	function getFilter(id) {
 		const getSelector = document.querySelector(`#\\${id}`);
@@ -19,7 +22,7 @@ function TodoCounter({ total, filterType, setFilter }) {
 
 	return (
 		<div className='TodoCounter'>
-			<p>{total} Items</p>
+			<p>{totalTodos} Items</p>
 			<div className='TodoCounter_selector'>
 				<p id='_all' className='active' onClick={(e) => getFilter(e.target.id)}>All</p>
 				<p id='_active' onClick={(e) => getFilter(e.target.id)}>Active</p>
