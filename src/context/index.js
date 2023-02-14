@@ -18,6 +18,8 @@ function TodoProvider(props) {
 
 	const [filterType, setFilter] = React.useState('');
 
+	const [openModal, setOpenModal] = React.useState(false);
+
 	const completedTodos = todos.filter(todo => todo.completed).length;
 	let totalTodos = todos.length;
 
@@ -74,7 +76,9 @@ function TodoProvider(props) {
 			filterType,
 			setFilter,
 			error,
-			loading
+			loading,
+			openModal,
+			setOpenModal
 		}}>
 			{props.children}
 		</ TodoContext.Provider>

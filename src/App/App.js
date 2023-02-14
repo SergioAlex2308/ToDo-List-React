@@ -2,7 +2,7 @@ import React from "react";
 
 import { TodoPanel } from '../components/TodoPanel';
 import { TodoData } from '../components/TodoData';
-import { TodoProvider } from '../context';
+import { TodoProvider } from '../context/index';
 
 import '../scss/app.scss';
 

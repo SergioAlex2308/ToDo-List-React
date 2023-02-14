@@ -1,0 +1,6 @@
+@use 'base/variables'as v;
+
+.CreateButton {
+	background-color: v.$blue;
+	z-index: 2;
+}
