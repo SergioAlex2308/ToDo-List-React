@@ -54,6 +54,20 @@ function TodoProvider(props) {
 		saveTodos(newTodos);
 	}
 
+	const addTodo = (text) => {
+		const newTodos = [...todos];
+		const todoCount = newTodos.length;
+
+		newTodos.push({
+			id: todoCount,
+			text,
+			completed: false
+		});
+		saveTodos(newTodos);
+
+		console.log(newTodos);
+	}
+
 	const deleteTodo = (id) => {
 
 		// Delete ToDo
@@ -73,6 +87,7 @@ function TodoProvider(props) {
 			deleteTodo,
 			totalTodos,
 			completedTodos,
+			addTodo,
 			filterType,
 			setFilter,
 			error,

@@ -1,5 +1,6 @@
 import React from 'react';
-import { TodoSearch } from './TodoSearch';
+/* import { TodoSearch } from './TodoSearch'; */
+import { FormTodo } from './FormTodo';
 import { ToggleLan } from './ToggleMode';
 
 /* import './TodoPanel.scss'; */
@@ -18,7 +19,7 @@ function TodoPanel() {
 					<h1>Quick manage your to-do list.</h1>
 					<h3>Add items and mark them as done.</h3>
 				</div>
-				<TodoSearch className='RightPanel_bar' />
+				<FormTodo className='RightPanel_bar'/>
 			</div>
 			<div className='RightPanel_waves'>
 				<img src={WavesLight} alt='waves blue tones' />

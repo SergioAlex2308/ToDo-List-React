@@ -1,6 +1,6 @@
 @use 'base/variables'as v;
 
-#bar {
+#addBar {
 
 	display: flex;
 	justify-content: center;
@@ -20,10 +20,10 @@
 		}
 	}
 
-	.bar {
+	.addBar {
 		&_input {
 			border: none;
-			border-radius: 0 0.5rem 0.5rem 0;
+			border-radius: .5rem 0 0 .5rem;
 			background-color: v.$whiteDarken;
 			padding-left: 2rem;
 
@@ -44,10 +44,10 @@
 			height: 5rem;
 			width: 10rem;
 
-			border-radius: 0.5rem 0 0 .5rem;
+			border-radius: 0 .5rem .5rem 0;
 			border: none;
 
-			background-color: v.$whiteDarken;
+			background-color: v.$blue;
 			color: v.$white;
 
 			& svg {

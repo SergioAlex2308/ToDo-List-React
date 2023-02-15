@@ -31,6 +31,7 @@ function TodoData() {
 	const {
 		error,
 		loading,
+		totalTodos,
 		searchedTodos,
 		completeTodo,
 		deleteTodo,
@@ -48,7 +49,8 @@ function TodoData() {
 				<TodoList>
 					{error && <p>an error has occurred</p>}
 					{loading && <p>Loading...</p>}
-					{(!loading && !searchedTodos.length) && <p>Add a ToDo...</p>}
+					{(!loading && !totalTodos.length) && <p className='LeftPanel_todos_placeholder'>Add a ToDo...</p>}
+					{((!totalTodos.length > 0) && !searchedTodos.length) && <p className='LeftPanel_todos_placeholder'>No results</p>}
 					{searchedTodos.map(todo => (
 						<TodoItem
 							key={todo.id}

@@ -4,7 +4,7 @@ import { TodoPanel } from '../components/TodoPanel';
 import { TodoData } from '../components/TodoData';
 import { TodoProvider } from '../context/index';
 
-import '../scss/app.scss';
+import '../scss/App.scss';
 
 function App() {
   return (
