@@ -1,0 +1,94 @@
+@use 'base/variables'as v;
+
+.dark {
+	& .RightPanel {
+		background-color: v.$dark;
+
+		&_header .switch label {
+			color: v.$blueLighten;
+		}
+
+
+		&_menu_text {
+			color: v.$white;
+		}
+		&_waves {
+			& img {
+				content: url(../../assets/WavesDark.png);
+			}
+		}
+	}
+
+	#addBar {
+		.addBar {
+			&_input {
+				background-color: v.$white;
+			}
+
+			&_button {
+				background-color: v.$darkLighten;
+				color: v.$blueLighten;
+			}
+		}
+	}
+
+	.LeftPanel {
+		background-color: v.$dark;
+
+		&_filter {
+			background-color: v.$darkLighten;
+
+			&_text {
+				color: v.$blueLighten;
+			}
+		}
+
+		&_footer {
+			background: v.$gDark;
+
+			&_icon {
+				fill: v.$blueLighten;
+			}
+		}
+	}
+
+	.Item {
+		background-color: v.$darkLighten;
+
+		&:hover {
+			filter: brightness(95%);
+		}
+
+		&_check {
+
+			& label {
+				border: 1px solid v.$blueLighten;
+
+				&::after {
+					border: 2px solid v.$darkLighten;
+					border-top: none;
+					border-right: none;
+				}
+			}
+
+
+			& input[type="checkbox"] {
+
+				&:checked+label {
+					background-color: v.$blueLighten;
+					border-color: v.$blueLighten;
+				}
+			}
+		}
+	}
+
+	.TodoCounter {
+		background-color: v.$darkLighten;
+
+		&_selector {
+			& .active {
+				color: v.$whiteDarken;
+			}
+		}
+	}
+}

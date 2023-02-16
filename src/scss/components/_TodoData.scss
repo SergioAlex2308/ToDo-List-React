@@ -42,11 +42,11 @@
 		position: fixed;
 		bottom: 0;
 
-		background: #3A5AB9;
+		background: v.$blue;
 		border-radius: 20px 20px 0px 0px;
 
 		&_icon {
-			fill: aliceblue;
+			fill: v.$white;
 		}
 	}
 }

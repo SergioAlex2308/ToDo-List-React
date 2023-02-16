@@ -1,19 +1,28 @@
 import React from 'react';
+import { ThemeContext, themes } from '../context/theme';
 
-/* import './ToggleLan.scss'; */
+function ToggleMode() {
 
-function ToggleLan() {
+  const [darkMode, setDarkMode] = React.useState(false);
 
   return (
+
     <div className='switch'>
       <label className='light'>Light</label>
-      <label className='switch_input'>
-        <input type='checkbox' />
-        <span className='switch_slider round'></span>
-      </label>
+      <ThemeContext.Consumer>
+        {({ changeTheme }) => (
+          <label className='switch_input'>
+            <input type='checkbox' onChange={() => {
+              setDarkMode(!darkMode);
+              changeTheme(darkMode ? themes.light : themes.dark);
+            }} />
+            <span className='switch_slider round'></span>
+          </label>
+        )}
+      </ThemeContext.Consumer>
       <label className='light'>Dark</label>
     </div>
   )
 }
 
-export { ToggleLan };
+export { ToggleMode };

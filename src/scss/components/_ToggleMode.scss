@@ -1,4 +1,4 @@
-@use 'base/variables' as v;
+@use 'base/variables'as v;
 
 .switch {
 	display: flex;
@@ -46,8 +46,8 @@
 			left: 3px;
 			bottom: 2px;
 			background-color: v.$white;
-			-webkit-transition: .4s;
 			transition: .4s;
+			-webkit-transition: .4s;
 		}
 	}
 
@@ -58,14 +58,17 @@
 
 	&_slider.round:before {
 		border-radius: 50%;
+
 	}
 }
 
-input {
-	&:checked+.switch_slider {
-		background-color: v.$blueLighten;
+input:checked {
 
+	&+.switch_slider {
+		background-color: v.$blueLighten;
+		
 		&:before {
+			background-color: v.$darkLighten;
 			-webkit-transform: translateX(20px);
 			-ms-transform: translateX(20px);
 			transform: translateX(20px);

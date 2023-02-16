@@ -12,10 +12,9 @@
 
 	background-color: v.$blue;
 
-	box-shadow: inset 0px -1px 0px #8C94B4;
+	box-shadow: inset 0px -1px 0px v.$blueLighten;
 
 	&:hover {
-		background-color: v.$blue;
 		filter: brightness(95%);
 	}
 
