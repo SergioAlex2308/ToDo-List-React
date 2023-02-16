@@ -1,4 +1,4 @@
-@use 'base/variables' as v;
+@use 'base/variables'as v;
 
 .LeftPanel {
 	z-index: 0;
@@ -10,6 +10,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+
 
 	&_filter {
 		display: flex;
@@ -29,6 +31,20 @@
 
 	&_todos {
 		padding: 70px 0;
+
+		&_placeholder {
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 10rem;
+
+			& p {
+				color: v.$whiteDarken;
+				font-size: 2rem;
+				font-weight: bold;
+			}
+		}
 	}
 
 	&_footer {

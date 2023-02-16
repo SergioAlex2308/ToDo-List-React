@@ -4,6 +4,9 @@ import { TodoCounter } from './TodoCounter';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { TodoSearch } from './TodoSearch';
+import { LoadingSkeleton } from './LoadingSkeleton';
+import { AlertAdd } from './AlertAdd';
+import { AlertResults } from './AlertResults';
 /* import { Modal } from './Modal';
 import { CreateTodoButton } from './CreateTodoButton'; */
 
@@ -45,10 +48,18 @@ function TodoData() {
 			</div>
 			<div className='LeftPanel_todos'>
 				<TodoList>
-					{error && <p>an error has occurred</p>}
-					{loading && <p>Loading...</p>}
-					{(!loading && !totalTodos.length) && <p className='LeftPanel_todos_placeholder'>Add a ToDo...</p>}
-					{((!totalTodos.length > 0) && !searchedTodos.length) && <p className='LeftPanel_todos_placeholder'>No results</p>}
+					{error &&
+						<p>an error has occurred</p>
+					}
+					{loading &&
+						<LoadingSkeleton />
+					}
+					{(totalTodos < 1) &&
+						<AlertAdd />
+					}
+					{((totalTodos > 0) && !searchedTodos.length) &&
+						<AlertResults />
+					}
 					{searchedTodos.map(todo => (
 						<TodoItem
 							key={todo.id}

@@ -1,0 +1,42 @@
+@use 'base/variables'as v;
+
+.SkeletonContainer {
+	width: 100%;
+	height: 100%;
+	display: flex;
+
+	&_ul {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		&_li {
+
+			width: 600px;
+			height: 56px;
+			margin: 2px;
+			box-shadow: inset 0px -1px 0px v.$whiteDarken;
+			opacity: 0.4;
+			border-radius: 5px;
+
+			animation-duration: 3s;
+			animation-fill-mode: forwards;
+			animation-iteration-count: infinite;
+			animation-name: preloadAnimation;
+			animation-timing-function: linear;
+			background: v.$whiteDarken;
+			background: linear-gradient(to right, v.$whiteDarken 8%, #d6d6d6 18%, v.$whiteDarken 33%);
+			display: flex;
+		}
+	}
+
+	@keyframes preloadAnimation {
+		0% {
+			background-position: -600px;
+		}
+
+		100% {
+			background-position: 600px;
+		}
+	}
+}

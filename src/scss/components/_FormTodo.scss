@@ -31,6 +31,12 @@
 			height: 50px;
 			padding: 1.5rem, 2rem;
 
+			&::-webkit-search-cancel-button {
+				position: relative;
+				padding-right: 2rem;
+				cursor: pointer;
+			}
+
 		}
 
 		&_button {

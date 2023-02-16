@@ -16,6 +16,7 @@ function FormTodo() {
 	const onSubmit = (e) => {
 		e.preventDefault();
 		addTodo(newTodoValue);
+		setNewTodoValue('');
 	}
 	return (
 		<form onSubmit={onSubmit} id='addBar'>
