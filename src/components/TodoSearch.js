@@ -20,7 +20,7 @@ function TodoSearch() {
           <line x1="21" y1="21" x2="15" y2="15" />
         </svg>
       </div>
-      <input type='search' className='bar_input' placeholder="Create a new ToDo..." value={searchValue} onChange={onSearchValueChange} />
+      <input type='search' className='bar_input' placeholder="Find a ToDo..." value={searchValue} onChange={onSearchValueChange} />
     </form>
   )
 }

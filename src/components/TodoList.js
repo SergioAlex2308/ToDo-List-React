@@ -4,7 +4,7 @@ import React from 'react';
 
 function TodoList( props ) {
   return (
-	<section className='Results'>
+	<section className='Result'>
 		<ul className='Result_list'>
 			{ props.children }
 		</ul>

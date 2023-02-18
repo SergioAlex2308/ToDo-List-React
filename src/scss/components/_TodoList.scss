@@ -1,6 +1,7 @@
 @use 'base/variables' as v;
+@use 'base/mixins' as m;
 
-.Results {
+.Result {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -12,5 +13,8 @@
 
 		height: 400px;
 		overflow-y: auto;
+	}
+	&_list {
+		width: 100%;
 	}
 }

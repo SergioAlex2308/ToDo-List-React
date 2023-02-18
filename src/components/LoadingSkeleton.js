@@ -7,6 +7,9 @@ function LoadingSkeleton() {
 			<li className='SkeletonContainer_ul_li'></li>
 			<li className='SkeletonContainer_ul_li'></li>
 			<li className='SkeletonContainer_ul_li'></li>
+			<li className='SkeletonContainer_ul_li'></li>
+			<li className='SkeletonContainer_ul_li'></li>
+			<li className='SkeletonContainer_ul_li'></li>
 		</ul>
 	</section>
   )

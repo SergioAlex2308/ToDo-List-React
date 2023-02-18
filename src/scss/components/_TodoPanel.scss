@@ -1,4 +1,5 @@
-@use 'base/variables' as v;
+@use 'base/variables'as v;
+@use 'base/mixins'as m;
 
 .RightPanel {
 	position: fixed;
@@ -16,6 +17,10 @@
 	box-shadow: 39px 0px 100px rgba(0, 0, 0, 0.2);
 	border-radius: 0px 40px 40px 0px;
 
+	@include m.tablet {
+		display: none;
+	}
+
 	&_header {
 		width: 100%;
 		display: flex;
@@ -25,7 +30,8 @@
 	&_menu {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		align-items: center;
+		width: 100%;
 
 		&_text {
 			display: flex;
@@ -33,8 +39,6 @@
 			text-align: center;
 			margin-top: 240px;
 			margin-bottom: 92px;
-
-			
 			color: v.$blue;
 
 			& h1,
@@ -42,14 +46,24 @@
 				margin: 0;
 				padding: 0;
 			}
+
 			& h1 {
-				font-size: 4rem;
+				font-size: 3rem;
 				font-weight: 400;
+
+				@include m.desktop {
+					font-size: 2.5rem;
+				}
 			}
+
 			& h3 {
-				font-size: 2.4rem;
+				font-size: 1.8rem;
 				font-weight: 200;
 				font-style: italic;
+
+				@include m.desktop {
+					font-size: 1.4rem;
+				}
 			}
 		}
 	}

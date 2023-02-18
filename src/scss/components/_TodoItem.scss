@@ -1,4 +1,5 @@
 @use 'base/variables' as v;
+@use 'base/mixins' as m;
 
 .Item {
 	display: flex;
@@ -9,6 +10,13 @@
 
 	width: 600px;
 	height: 56px;
+
+	@include m.tablet {
+		width: 95%;
+	}
+	@include m.desktop {
+		width: 100%;
+	}
 
 	background-color: v.$blue;
 
@@ -60,20 +68,30 @@
 		}
 	}
 
+	&_text {
+		&--completed {
+			font-style: italic;
+			text-decoration: line-through;
+			color: v.$whiteDarken;
+
+			@include m.phone {
+				font-size: 12px;
+			}
+		}
+	}
+
 	&_text,
 	&_close {
 		font-weight: 400;
 		font-size: 16px;
 		margin: 0;
 		color: v.$whiteDarken;
-	}
-	&_text {
-		&--completed {
-			font-style: italic;
-			text-decoration: line-through;
-			color: v.$whiteDarken;
+
+		@include m.phone {
+			font-size: 12px;
 		}
 	}
+	
 
 	&_close:hover {
 		cursor: pointer;

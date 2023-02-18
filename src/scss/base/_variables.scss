@@ -12,3 +12,9 @@ $whiteDarken: #E0E0E0;
 $gLigth:linear-gradient(180deg, #5F688A 0%, #232B48 100%);
 $gDark: radial-gradient(50% 50% at 50% 50%, #181629 0%, #151423 100%);
 $gDarkLighten: linear-gradient(180deg, #1C1933 0%, #161424 100%);
+
+// Media Queries Sizes
+$phone: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$laptop: 1280px;

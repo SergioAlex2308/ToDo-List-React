@@ -1,10 +1,16 @@
 @use 'base/variables'as v;
+@use 'base/mixins'as m;
 
 #addBar {
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 100%;
+
+	@include m.desktop {
+		width: 80%;
+	}
 
 	& input {
 
