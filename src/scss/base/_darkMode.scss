@@ -1,7 +1,7 @@
 @use 'base/variables'as v;
 
 .dark {
-	& .RightPanel {
+	& .LeftPanel {
 		background-color: v.$dark;
 
 		&_header .switch label {
@@ -12,6 +12,7 @@
 		&_menu_text {
 			color: v.$white;
 		}
+
 		&_waves {
 			& img {
 				content: url(../../assets/WavesDark.png);
@@ -32,7 +33,7 @@
 		}
 	}
 
-	.LeftPanel {
+	.RightPanel {
 		background-color: v.$dark;
 
 		&_filter {
@@ -88,6 +89,28 @@
 		&_selector {
 			& .active {
 				color: v.$whiteDarken;
+			}
+		}
+	}
+
+	.switch {
+		&_slider {
+			border: 1px solid v.$blueLighten;
+		}
+	}
+
+	.CreateButton {
+		background-color: v.$darkLighten;
+	}
+
+	.Modal {
+		&_content {
+			background-color: v.$dark;
+
+			&_header {
+				& .Item_close {
+					color: v.$white;
+				}
 			}
 		}
 	}

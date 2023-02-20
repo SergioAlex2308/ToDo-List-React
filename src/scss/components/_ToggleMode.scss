@@ -18,7 +18,7 @@
 		position: relative;
 		display: inline-block;
 		width: 60px;
-		height: 30px;
+		height: 32px;
 
 		& input {
 			opacity: 0;
@@ -34,6 +34,7 @@
 		left: 8px;
 		right: 0;
 		bottom: 0;
+		border: 1px solid v.$white;
 		background-color: v.$blue;
 		-webkit-transition: .4s;
 		transition: .4s;

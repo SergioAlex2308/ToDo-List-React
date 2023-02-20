@@ -24,3 +24,9 @@
         @content;
     }
 }
+
+@mixin hidePc {
+    @media (min-width: #{v.$tablet + 1}) {
+        @content;
+    }
+}

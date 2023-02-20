@@ -16,33 +16,43 @@ function TodoProvider(props) {
 	//States
 	const [searchValue, setSearchValue] = React.useState('');
 
-	const [filterType, setFilter] = React.useState('');
+	const [filterType, setFilter] = React.useState('_all');
 
 	const [openModal, setOpenModal] = React.useState(false);
+
+	const [darkMode, setDarkMode] = React.useState(false);
 
 	const completedTodos = todos.filter(todo => todo.completed).length;
 	let totalTodos = todos.length;
 
 	let searchedTodos = [];
 
-	if (filterType === '_completed') {
-		searchedTodos = todos.filter(todo => todo.completed === true);
-		totalTodos = searchedTodos.length;
-	}
-	else if (filterType === '_active') {
-		searchedTodos = todos.filter(todo => todo.completed === false);
-		totalTodos = searchedTodos.length;
-	}
-	else if (!searchedTodos >= 1) {
-		searchedTodos = todos;
-	} else {
-		searchedTodos = todos.filter(todo => {
+	const searchTodoFilter = (todoList) => {
+		searchedTodos = todoList.filter(todo => {
 			const todoText = todo.text.toLowerCase();
 			const searchText = searchValue.toLowerCase();
 			return todoText.includes(searchText);
 		})
+	}
+	if (!searchedTodos >= 1) {
+		searchedTodos = todos;
 
 	}
+	else if (filterType === '_all') {
+		searchTodoFilter(todos);
+
+	}
+	else if (filterType === '_completed') {
+		searchedTodos = todos.filter(todo => todo.completed === true);
+		totalTodos = searchedTodos.length;
+		searchTodoFilter(searchedTodos);
+	}
+	else if (filterType === '_active') {
+		searchedTodos = todos.filter(todo => todo.completed === false);
+		totalTodos = searchedTodos.length;
+		searchTodoFilter(searchedTodos);
+	}
+
 
 	const completeTodo = (id) => {
 
@@ -65,7 +75,7 @@ function TodoProvider(props) {
 		});
 		saveTodos(newTodos);
 
-		console.log(newTodos);
+		/* console.log(newTodos); */
 	}
 
 	const deleteTodo = (id) => {
@@ -93,7 +103,9 @@ function TodoProvider(props) {
 			error,
 			loading,
 			openModal,
-			setOpenModal
+			setOpenModal,
+			darkMode,
+			setDarkMode
 		}}>
 			{props.children}
 		</ TodoContext.Provider>

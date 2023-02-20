@@ -1,7 +1,7 @@
 @use 'base/variables'as v;
 @use 'base/mixins'as m;
 
-.RightPanel {
+.LeftPanel {
 	position: fixed;
 	z-index: 1;
 	display: flex;

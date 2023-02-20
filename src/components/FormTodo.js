@@ -1,7 +1,7 @@
 import React from 'react'
 import { TodoContext } from '../context'
 
-function FormTodo() {
+function FormTodo({ openModal,  setOpenModal }) {
 
 	const [newTodoValue, setNewTodoValue] = React.useState('');
 
@@ -17,9 +17,10 @@ function FormTodo() {
 		e.preventDefault();
 		addTodo(newTodoValue);
 		setNewTodoValue('');
+		if(openModal) setOpenModal(!openModal);
 	}
 	return (
-		<form onSubmit={onSubmit} id='addBar'>
+		<form onSubmit={onSubmit}  id='addBar'>
 			<input type='search' value={newTodoValue} onChange={onChange} className='addBar_input' placeholder="Create a new ToDo..." />
 			<button type='submit' className='addBar_button'>Add</button>
 		</form>

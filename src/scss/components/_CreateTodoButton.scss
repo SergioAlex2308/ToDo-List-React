@@ -1,6 +1,21 @@
 @use 'base/variables'as v;
+@use 'base/mixins' as m;
 
 .CreateButton {
+	position: fixed;
+	right: 2.5rem;
+	bottom: 2.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background-color: v.$blue;
 	z-index: 2;
+	border-radius: 50%;
+	border: none;
+	width: 5rem;
+	height: 5rem;
+
+	@include m.hidePc {
+		display: none;
+	}
 }

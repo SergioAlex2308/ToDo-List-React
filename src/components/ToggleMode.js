@@ -1,18 +1,15 @@
 import React from 'react';
 import { ThemeContext, themes } from '../context/theme';
 
-function ToggleMode() {
-
-  const [darkMode, setDarkMode] = React.useState(false);
+function ToggleMode({ darkMode, setDarkMode }) {
 
   return (
-
     <div className='switch'>
-      <label className='light'>Light</label>
+      <label className='switch_text'>Light</label>
       <ThemeContext.Consumer>
         {({ changeTheme }) => (
           <label className='switch_input'>
-            <input type='checkbox' onChange={() => {
+            <input id='toggleCheck' type='checkbox' onChange={() => {
               setDarkMode(!darkMode);
               changeTheme(darkMode ? themes.light : themes.dark);
             }} />
@@ -20,7 +17,7 @@ function ToggleMode() {
           </label>
         )}
       </ThemeContext.Consumer>
-      <label className='light'>Dark</label>
+      <label className='switch_text'>Dark</label>
     </div>
   )
 }
